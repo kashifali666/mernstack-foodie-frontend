@@ -38,7 +38,12 @@ const Login = () => {
     // Store email and token if login is successful
     localStorage.setItem("userEmail", credentials.email);
     localStorage.setItem("authToken", json.authToken);
-    localStorage.setItem("userEmail", userData.email); // Save the email for later use
+
+    const userData = json.user;
+
+    if (userData && userData.email) {
+      localStorage.setItem("userEmail", userData.email);
+    }
 
     console.log("Stored Email:", localStorage.getItem("userEmail"));
     console.log("Stored Token:", localStorage.getItem("authToken"));
